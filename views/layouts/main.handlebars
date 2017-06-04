@@ -1,12 +1,54 @@
 <!doctype html>
 <html>
     <head>
-        <title>Meadowlark Travel</title>
+         <title>Meadowlark Travel</title>
+         <meta charset="utf-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {{#if showTest}}
+            <link rel="stylesheet" href="/vendor/mocha.css">
+        {{/if}}
+        {{{_sections.head}}}
+         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap-theme.min.css">
+
     </head>
 <body>
     <header>
-        <img src = "/img/0-9.gif" alt = 'pdd'>
+        <img src = "/img/0-8.gif" alt = 'pdd'>
     </header>
     {{{body}}}
+
+    <script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/vendor/js/jquery-2.1.1.min.js"><\/script>')</script>
+
+    {{#if showTest}}
+        <div id = "mocha"></div>
+        <script src = "/vendor/mocha.js"></script>
+        <script src = "/vendor/chai.js"></script>
+        <script>
+            mocha.ui('tdd');
+            var assert = chai.assert;
+        </script>
+        <script src="/qa/tests-global.js"></script>
+        {{#if pageTestScript}}
+            <script src="{{pageTestScript}}"></script>
+        {{/if}}
+        <script>mocha.run();</script>
+    {{/if}}
+    {{{_sections.jquery}}}
+
+    
+
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+
 </body>
 </html>
